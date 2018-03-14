@@ -1,0 +1,59 @@
+<ion-header>
+
+  <ion-navbar color="secondary" no-border-bottom>
+    <ion-title>Inquiry</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="inquries" color="secondary">
+      <ion-segment-button value="pending">
+        Pending
+        <ion-badge color="secondary" *ngIf="(pendingCount$ | async) != 0" item-end>{{ pendingCount$ | async }}</ion-badge>
+      </ion-segment-button>
+      <ion-segment-button value="onProcess">
+        On Process
+        <ion-badge color="primary" *ngIf="(onProcessCount$ | async) != 0" item-end>{{ onProcessCount$ | async }}</ion-badge>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-fab bottom right>
+    <button ion-fab color="secondary" (click)="inquiry()">
+      <ion-icon name="ios-create"></ion-icon>
+    </button>
+  </ion-fab>
+  <div [ngSwitch]="inquries">
+
+    <div *ngSwitchCase="'pending'">
+      <ion-list>
+        <ion-item *ngFor="let pending of pending$ | async">
+          <ion-icon color="secondary" name="ios-create-outline" item-start></ion-icon>
+          <p>Inquiry Number: {{ pending.details.clientNumber }}</p>
+          <p>Date: {{ pending.dateInquire | date:'medium'}}</p>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div *ngSwitchCase="'onProcess'">
+      <ion-list>
+        <ion-item *ngFor="let onProcesss of onProcess$ | async">
+          <ion-icon color="primary" name="md-checkmark-circle-outline" item-start></ion-icon>
+          <p>Inquiry Number: {{ onProcesss.details.clientNumber }}</p>
+          <p>Date: {{ onProcesss.dateInquire | date:'medium'}}</p>
+          <p>Process By: {{ onProcesss.admin.fullName }}</p>
+          <p>Process Date: {{ onProcesss.dateConfirmed | date:'medium' }}</p>
+        </ion-item>
+      </ion-list>
+    </div>
+
+  </div>
+
+</ion-content>

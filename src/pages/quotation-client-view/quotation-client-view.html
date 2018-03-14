@@ -1,0 +1,68 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>Quotation View</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="(selectedQuotation$ | async);let quote;">
+    <ion-card>
+      <ion-card-header>
+        Inquiry Information
+      </ion-card-header>
+      <ion-list>
+
+        <ion-item>
+          <ion-icon name="ios-grid-outline" item-start></ion-icon>
+          {{quote.details.clientNumber}}
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="md-calendar" item-start></ion-icon>
+          {{quote.dateInquire | date}}
+        </ion-item>
+
+
+      </ion-list>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        Quotation Information
+      </ion-card-header>
+      <ion-list>
+
+        <ion-item>
+          <ion-icon name="person" item-start></ion-icon>
+          {{quote.admin.fullName}}
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="md-calendar" item-start></ion-icon>
+          {{quote.dateConfirmed | date}}
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="md-stats" item-start></ion-icon>
+          Waiting for Your Approval
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="md-document" item-start></ion-icon>
+          <button ion-button clear color="primary">View PDF</button>
+        </ion-item>
+
+        <ion-item>
+          <button ion-button color="secondary" clear item-start>Accept</button>
+          <button ion-button color="danger" clear item-end>Reject</button>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+    <br/>
+    <button ion-button color="secondary" block (click)="uploadQuotation(quote.inquiryId)">UPLOAD YOUR QUOTATION</button>
+
+  </div>
+</ion-content>

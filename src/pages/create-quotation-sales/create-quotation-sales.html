@@ -1,0 +1,67 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>
+      Create Quotation
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="assets/avatar/avatar.jpg">
+        </ion-avatar>
+        <h2>John Doe</h2>
+        <p>johndoe@gmail.com</p>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="grid" item-start></ion-icon>
+          <p>123133333</p>
+
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="call" item-start></ion-icon>
+          <p>09312399322</p>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="locate" item-start></ion-icon>
+          <p>Araneta Street</p>
+          <p>Bacolod City</p>
+          <p>Negros Occidental</p>
+        </ion-item>
+
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="document" item-start></ion-icon>
+        <button ion-button color="primary" clear (click)="viewPdf()">
+          View PDF
+        </button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+
+  <button ion-button block color="secondary" (click)="upload()">
+    Add/Upload Quotation
+  </button>
+</ion-content>

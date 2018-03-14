@@ -1,0 +1,27 @@
+<ion-content padding>
+
+  <img src="assets/logo/best-logo.png" alt="" srcset="">
+  <form [formGroup]="loginForm">
+    <ion-card>
+      <ion-card-content>
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="text" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+
+      </ion-card-content>
+    </ion-card>
+
+    <button ion-button type="submit" full color="secondary" (click)="login()">Log In</button>
+  </form>
+  <button ion-button full clear color="danger" (click)="forgotPassword()">Forgot Password?</button>
+
+</ion-content>
+
+<ion-footer>
+  <button ion-button full clear color="primary" (click)="register()">Don' t have an account? Click here to sign up</button>
+</ion-footer>

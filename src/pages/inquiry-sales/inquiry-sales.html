@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar color="secondary" no-border-bottom>
+    <ion-title>Inquiry</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="inquries" color="secondary">
+      <ion-segment-button value="pending">
+        Pending
+        <ion-badge color="secondary" item-end>3</ion-badge>
+      </ion-segment-button>
+      <!-- <ion-segment-button value="active">
+        Active
+        <ion-badge color="secondary" item-end>3</ion-badge>
+      </ion-segment-button> -->
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div [ngSwitch]="inquries">
+    <div *ngSwitchCase="'pending'">
+      <inquiry-sales-inquiry-sales-pending></inquiry-sales-inquiry-sales-pending>
+    </div>
+    <div *ngSwitchCase="'active'">
+      <inquiry-sales-active></inquiry-sales-active>
+    </div>
+
+  </div>
+
+</ion-content>

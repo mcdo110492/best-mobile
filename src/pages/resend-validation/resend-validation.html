@@ -1,0 +1,37 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>Resend Validation</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="resendForm">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="text" formControlName="email" email></ion-input>
+          </ion-item>
+          <div class="error-validation" *ngIf="resendForm.get('email').hasError('required') && resendForm.get('email').touched">
+            Email is required
+          </div>
+          <div class="error-validation" *ngIf="resendForm.get('email').hasError('email') && resendForm.get('email').touched">
+            Input must be an email
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button type="submit" ion-button block round color="primary" (click)="resend()" [disabled]="resendForm.invalid">Resend Activation Code</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </form>
+</ion-content>

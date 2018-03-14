@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>Quotations</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let quote of quotations$ | async">
+      <ion-item>
+        <ion-icon name="quote" item-start color="secondary"></ion-icon>
+        <p>Inquiry Number: {{ quote.details.clientNumber }}</p>
+        <p>Date: {{ quote.dateInquire | date:'medium'}}</p>
+        <p>Slide Left to View</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click)="goToView(quote.inquiryId)">
+          View
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>
